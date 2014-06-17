@@ -6,11 +6,13 @@ Handles more like a client application, replication, authenticaton and acl syste
 Features:
 * GSSAPI/Kerberos authentication
 * LDAP backend for user & group information
-* Three level ACL system for content, with inheritation support
+* Three role (read, write, admin) ACL system for content, with inheritation support
 * Simple macros (TOC, include children pages)
 * ExtJS based user interface
 * Non-destructive versioning data model
-* Replication to other instances
+* Wysiwyg html editor, improved image uploading & gallery
+* Input validation, including html whitelisting
+* Rudimentary replication between instances
 
 [Mandatory screenshot][1]
 
@@ -24,8 +26,8 @@ Prerequisities
 * Golang
 * Memcached recommended
 
-Starting up
------------
+Most important things
+---------------------
 
 This should pull the required packages
 
@@ -146,6 +148,15 @@ Accompany with server/client.json file for settings. Create the mentioned CA cer
 
 All logging goes to syslog.
 
+Starting up
+-----------
+
+Kick the tires by
+
+```
+revel run github.com/mikkolehtisalo/iw dev 80
+```
+
 The good and the bad
 ====================
 
@@ -153,4 +164,4 @@ Most parts are pretty solid. Would need test(s/ing) to get rid of some corner ca
 
 It's not a ready product, but wouldn't take much to polish it.
 
-[1]:http://screenshot.org/
+[1]:https://raw.githubusercontent.com/mikkolehtisalo/iw/master/docs/screenshot.png
