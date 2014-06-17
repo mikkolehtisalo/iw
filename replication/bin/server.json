@@ -1,0 +1,10 @@
+{
+ "CAKeyFile": "/root/go/src/iw/certificates/ca.crt",
+ "MyCertificateFile": "/root/go/src/iw/certificates/my.crt",
+ "MyKeyFile": "/root/go/src/iw/certificates/my.pem",
+ "ValidPeers": ["dev.localdomain"],
+ "ServiceAddress": "0.0.0.0:8000",
+ "DBUser": "wiki",
+ "DBPassword": "password",
+ "DBName": "wiki"
+}

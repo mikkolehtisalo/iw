@@ -1,0 +1,64 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+module:testrunner
+
+GET     /                                       App.Index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/static folder to the /static path
+GET     /static/*filepath                       Static.Serve("static")
+
+# Wikis
+POST /api/wikis/:wiki Wikis.Create
+GET /api/wikis Wikis.Read
+PUT /api/wikis/:wiki Wikis.Update
+DELETE /api/wikis/:wiki Wikis.Delete
+
+# Favorite Wikis
+PUT /api/favoritewikis/:wiki FavoriteWikis.Create
+GET /api/favoritewikis FavoriteWikis.Read
+DELETE /api/favoritewikis/:wiki FavoriteWikis.Delete
+
+# Pages
+POST /api/pages/:wiki/:page Pages.Create
+# ExtJS tree component passes the requested node as parameter "node"
+GET /api/pages/* Pages.Read
+PUT /api/pages/:wiki/:page Pages.Update
+DELETE /api/pages/:wiki/:page Pages.Delete
+
+# Content fields
+# CREATE is never done from client side
+GET /api/contentfields/:wiki/:page ContentFields.Read
+PUT /api/contentfields/:wiki/:page ContentFields.Update
+# DELETE is never done from client side
+
+# Attachments
+POST /api/attachments/:wiki/:attachment Attachments.Create
+# Serve an attachment (for direct links to files, images etc)
+GET /att/:wiki/:attachment Attachments.Serve
+GET /api/attachments/:wiki Attachments.Read
+# PUT is never done from client side
+DELETE /api/attachments/:wiki/:attachment Attachments.Delete
+
+# Locks
+POST /api/locks/:wiki/:target Locks.Create
+GET /api/locks/:wiki/:target Locks.Read
+# PUT is never done
+DELETE /api/locks/:wiki/:target Locks.Delete
+
+# Activities
+# Only GET available
+GET /api/activities Activities.Read
+
+# User avatars
+GET /user/:user UserAvatars.Read
+
+# UserGroupSearch
+GET /api/usergroupsearch UserGroupSearch.List
+
+# Catch all
+*       /:controller/:action                    :controller.:action
